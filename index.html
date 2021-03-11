@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href='http://fonts.googleapis.com/css?family=VT323' rel='stylesheet' type='text/css'>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<title>Impact Game</title>
+	<style type="text/css">
+		html,body {
+			background-color: #333;
+			color: #fff;
+			font-family: 'VT323', sans-serif;
+			margin: 0;
+			padding: 0;
+			font-size: 12pt;
+		}
+
+		a {
+			color: #fff;
+			font-family: 'VT323', sans-serif;
+			text-decoration: underline;
+		}
+
+		#wrapper {
+			position: relative;
+			width: 960px;
+			height: 2000px;
+		}
+		#canvas {
+			position: absolute;
+			left: 50px;
+			top: 50px;
+			margin: auto;
+		}
+		#crosbyinfo, #hallinfo, #priceinfo, #ducheneinfo, #crawfordinfo, #holtbyinfo, #luongoinfo, #smithinfo, #alznerinfo, #bouwmeesterinfo, #boyleinfo, #doughtyinfo, #greeninfo, #hamhuisinfo, #hamonicinfo, #keithinfo, 	#letanginfo, #methotinfo, #phaneufinfo, #pietrangeloinfo, #seabrookinfo, #mstaalinfo, #subbaninfo, #vlasicinfo, #weberinfo, #bergeroninfo, #carterinfo, #coutureinfo, #eberleinfo, 	#getzlafinfo, #girouxinfo, #kunitzinfo, #laddinfo, #lucicinfo, #marchandinfo, #nashinfo, #nealinfo, #perryinfo, #richardsinfo, #sharpinfo, #estaalinfo, #jstaalinfo, #louisinfo, #stamkosinfo, #tavaresinfo, #thorntoninfo, #toewsinfo {
+			position: absolute;
+			z-index: 99999999;
+			display: none;
+			right: -40px;
+			font-size: 12 px;
+			top: 105px;
+		}
+		#forwards {
+			position: absolute;
+			z-index: 99999999;
+			left: 75px;
+			font-size: 12 px;
+			top: 40px;
+		}
+		#defence {
+			position: absolute;
+			z-index: 99999999;
+			left: 280px;
+			font-size: 12 px;
+			top: 40px;
+			display: none;
+			visibility: hidden;
+		}
+		#goalies {
+			position: absolute;
+			z-index: 99999999;
+			left: 422px;
+			font-size: 12 px;
+			top: 40px;
+			display: none;
+			visibility: hidden;
+		}
+		#yourpick {
+			position: absolute;
+			z-index: 99999999;
+			left: 686px;
+			font-size: 12 px;
+			top: 70px;
+		}
+		#lockin {
+			position: absolute;
+			z-index: 99999999;
+			left: 474px;
+			font-size: 12 px;
+			top: 200px;
+		}
+
+		#print {
+			position: absolute;
+			z-index: 99999999;
+			left: 390px;
+			font-size: 12 px;
+			top: 10px;
+			width: 100%;
+			display: none;
+			visibility: hidden;
+		}
+
+		#yourteam {
+			position: absolute;
+			top: 800px;
+			left: 50px;
+			height: 893px;
+			z-index: 99999999;
+			font-size: 12 px;
+			display: none;
+		}
+
+		#forwards {
+
+		}
+
+		#defencemen{
+
+		}
+
+	</style>
+
+	<script type="text/javascript" src="game.min.js"></script>
+	<script type="text/javascript" src="html2canvas.js"></script>
+</head>
+<body>
+	<script>
+			function screenshot() {
+				html2canvas($('#yourteam'), {
+					onrendered: function(canvas) {
+						var img = canvas.toDataURL('image/png')
+						var id = "rendered"
+						//window.open(img);
+						$('#yourteam').append("<img id=" + id + " src=" + img + ">");
+						document.getElementById('yourteamtable').style.visibility = "hidden";
+						document.getElementById('yourteamtable').style.display = "none";
+						//document.getElementById('yourteam').appendChild(img);
+
+					var imgd = document.getElementById('rendered');
+					imgd.onclick = function() {
+					    var urld = imgd.src.replace(/^data:image\/[^;]/, 'data:application/octet-stream');
+					    location.href = urld;
+					};
+
+												}
+											});
+											}
+
+
+			function hidethemall() {
+				document.getElementById('crawfordinfo').style.visibility = "hidden";
+				document.getElementById('crawfordinfo').style.display = "none";
+				document.getElementById('holtbyinfo').style.visibility = "hidden";
+				document.getElementById('holtbyinfo').style.display = "none";
+				document.getElementById('luongoinfo').style.visibility = "hidden";
+				document.getElementById('luongoinfo').style.display = "none";
+				document.getElementById('priceinfo').style.visibility = "hidden";
+				document.getElementById('priceinfo').style.display = "none";
+				document.getElementById('smithinfo').style.visibility = "hidden";
+				document.getElementById('smithinfo').style.display = "none";
+				document.getElementById('alznerinfo').style.visibility = "hidden";
+				document.getElementById('alznerinfo').style.display = "none";
+				document.getElementById('bouwmeesterinfo').style.visibility = "hidden";
+				document.getElementById('bouwmeesterinfo').style.display = "none";
+				document.getElementById('boyleinfo').style.visibility = "hidden";
+				document.getElementById('boyleinfo').style.display = "none";
+				document.getElementById('doughtyinfo').style.visibility = "hidden";
+				document.getElementById('doughtyinfo').style.display = "none";
+				document.getElementById('greeninfo').style.visibility = "hidden";
+				document.getElementById('greeninfo').style.display = "none";
+				document.getElementById('hamhuisinfo').style.visibility = "hidden";
+				document.getElementById('hamhuisinfo').style.display = "none";
+				document.getElementById('hamonicinfo').style.visibility = "hidden";
+				document.getElementById('hamonicinfo').style.display = "none";
+				document.getElementById('keithinfo').style.visibility = "hidden";
+				document.getElementById('keithinfo').style.display = "none";
+				document.getElementById('letanginfo').style.visibility = "hidden";
+				document.getElementById('letanginfo').style.display = "none";
+				document.getElementById('methotinfo').style.visibility = "hidden";
+				document.getElementById('methotinfo').style.display = "none";
+				document.getElementById('phaneufinfo').style.visibility = "hidden";
+				document.getElementById('phaneufinfo').style.display = "none";
+				document.getElementById('pietrangeloinfo').style.visibility = "hidden";
+				document.getElementById('pietrangeloinfo').style.display = "none";
+				document.getElementById('seabrookinfo').style.visibility = "hidden";
+				document.getElementById('seabrookinfo').style.display = "none";
+				document.getElementById('mstaalinfo').style.visibility = "hidden";
+				document.getElementById('mstaalinfo').style.display = "none";
+				document.getElementById('subbaninfo').style.visibility = "hidden";
+				document.getElementById('subbaninfo').style.display = "none";
+				document.getElementById('vlasicinfo').style.visibility = "hidden";
+				document.getElementById('vlasicinfo').style.display = "none";
+				document.getElementById('weberinfo').style.visibility = "hidden";
+				document.getElementById('weberinfo').style.display = "none";
+				document.getElementById('bergeroninfo').style.visibility = "hidden";
+				document.getElementById('bergeroninfo').style.display = "none";
+				document.getElementById('carterinfo').style.visibility = "hidden";
+				document.getElementById('carterinfo').style.display = "none";
+				document.getElementById('coutureinfo').style.visibility = "hidden";
+				document.getElementById('coutureinfo').style.display = "none";
+				document.getElementById('crosbyinfo').style.visibility = "hidden";
+				document.getElementById('crosbyinfo').style.display = "none";
+				document.getElementById('ducheneinfo').style.visibility = "hidden";
+				document.getElementById('ducheneinfo').style.display = "none";
+				document.getElementById('eberleinfo').style.visibility = "hidden";
+				document.getElementById('eberleinfo').style.display = "none";
+				document.getElementById('getzlafinfo').style.visibility = "hidden";
+				document.getElementById('getzlafinfo').style.display = "none";
+				document.getElementById('girouxinfo').style.visibility = "hidden";
+				document.getElementById('girouxinfo').style.display = "none";
+				document.getElementById('hallinfo').style.visibility = "hidden";
+				document.getElementById('hallinfo').style.display = "none";
+				document.getElementById('kunitzinfo').style.visibility = "hidden";
+				document.getElementById('kunitzinfo').style.display = "none";
+				document.getElementById('laddinfo').style.visibility = "hidden";
+				document.getElementById('laddinfo').style.display = "none";
+				document.getElementById('lucicinfo').style.visibility = "hidden";
+				document.getElementById('lucicinfo').style.display = "none";
+				document.getElementById('marchandinfo').style.visibility = "hidden";
+				document.getElementById('marchandinfo').style.display = "none";
+				document.getElementById('nashinfo').style.visibility = "hidden";
+				document.getElementById('nashinfo').style.display = "none";
+				document.getElementById('nealinfo').style.visibility = "hidden";
+				document.getElementById('nealinfo').style.display = "none";
+				document.getElementById('perryinfo').style.visibility = "hidden";
+				document.getElementById('perryinfo').style.display = "none";
+				document.getElementById('richardsinfo').style.visibility = "hidden";
+				document.getElementById('richardsinfo').style.display = "none";
+				document.getElementById('sharpinfo').style.visibility = "hidden";
+				document.getElementById('sharpinfo').style.display = "none";
+				document.getElementById('estaalinfo').style.visibility = "hidden";
+				document.getElementById('estaalinfo').style.display = "none";
+				document.getElementById('jstaalinfo').style.visibility = "hidden";
+				document.getElementById('jstaalinfo').style.display = "none";
+				document.getElementById('louisinfo').style.visibility = "hidden";
+				document.getElementById('louisinfo').style.display = "none";
+				document.getElementById('stamkosinfo').style.visibility = "hidden";
+				document.getElementById('stamkosinfo').style.display = "none";
+				document.getElementById('tavaresinfo').style.visibility = "hidden";
+				document.getElementById('tavaresinfo').style.display = "none";
+				document.getElementById('thorntoninfo').style.visibility = "hidden";
+				document.getElementById('thorntoninfo').style.display = "none";
+				document.getElementById('toewsinfo').style.visibility = "hidden";
+				document.getElementById('toewsinfo').style.display = "none";
+			}
+
+			function showDiv() {
+			document.getElementById('yourteam').style.visibility = "visible";
+		    document.getElementById('yourteam').style.display = "block";
+		    document.getElementById('yourteam').style.top = "50px";
+		    document.getElementById('canvas').style.visibility = "hidden";
+		    document.getElementById('canvas').style.display = "none";
+		    document.getElementById('lables').style.visibility = "hidden";
+		    document.getElementById('lables').style.display = "none";
+		    document.getElementById('playerinfo').style.visibility = "hidden";
+		    document.getElementById('playerinfo').style.display = "none";
+			document.getElementById('print').style.visibility = "visible";
+		    document.getElementById('print').style.display = "block";
+		    $("#left1photo").attr("id", "left1photof");
+		    $("#centre1photo").attr("id", "centre1photof");
+		    $("#right1photo").attr("id", "right1photof");
+		    $("#left1").attr("id", "left1f");
+		    $("#centre1").attr("id", "centre1f");
+		    $("#right1").attr("id", "right1f");
+		    $("#left2photo").attr("id", "left2photof");
+		    $("#centre2photo").attr("id", "centre2photof");
+		    $("#right2photo").attr("id", "right2photof");
+		    $("#left2").attr("id", "left2f");
+		    $("#centre2").attr("id", "centre2f");
+		    $("#right2").attr("id", "right2f");
+		    $("#left3photo").attr("id", "left3photof");
+		    $("#centre3photo").attr("id", "centre3photof");
+		    $("#right3photo").attr("id", "right3photof");
+		    $("#left3").attr("id", "left3f");
+		    $("#centre3").attr("id", "centre3f");
+		    $("#right3").attr("id", "right3f");
+		    $("#left4photo").attr("id", "left4photof");
+		    $("#centre4photo").attr("id", "centre4photof");
+		    $("#right4photo").attr("id", "right4photof");
+		    $("#left4").attr("id", "left4f");
+		    $("#centre4").attr("id", "centre4f");
+		    $("#right4").attr("id", "right4f");
+		    screenshot();
+		    }
+	</script>
+	<div id="wrapper">
+		<canvas id="canvas"></canvas>
+		<div id="lables">
+		<div id="forwards"><p>Forwards</p></div>
+		<div id="defence"><p>Defence</p></div>
+		<div id="goalies"><p>Goalies</p></div>
+		<div id="yourpick"><p>Last selected player</p></div></div>
+		<div id="print"><a href=img><p>Share my team on facebook</a> or <a href="javascript:history.go(0)">start over</a></p></div>
+		<div id="playerinfo">
+
+		<div id="ducheneinfo"><table width="250px">
+		<tr><td colspan="3" rowspan="10"><img src="mugs/mattduchene.png"></td><td colspan="9">Matt Duchene - Centre</td></tr>
+		<tr><td colspan="9">Colorado Avalanche</td></tr>
+		<tr><td colspan="9">Intl. experience</td></tr>
+		<tr><td colspan="9">2008 WJHC -  Gold</td></tr>
+		<tr><td colspan="9"></td></tr>
+		<tr><td colspan="9"></td></tr>
+		<tr><td>Season</td><td>Age</td><td>G</td><td>A</td><td>PTS</td><td>+/-</td><td>PIM</td><td>EVG</td><td>PPG</td></tr>
+		<tr><td>12-13</td><td>22</td><td>17</td><td>26</td><td>43</td><td>-12</td><td>12</td><td>15</td><td>2</td></tr>
+		<tr><td>11-12</td><td>21</td><td>14</td><td>14</td><td>28</td><td>-11</td><td>8</td><td>9</td><td>5</td></tr>
+		</table></div>
+
+		<div id="crosbyinfo"><table width="250px">
+		<tr><td colspan="3" rowspan="10"><img src="mugs/sidneycrosby.png"></td><td colspan="9">Sidney Crosby - Centre</td></tr>
+		<tr><td colspan="9">Pittsburgh Penguins </td></tr>
+		<tr><td colspan="9">Intl. experience</td></tr>
+		<tr><td colspan="9">2010 Olympics -  Gold</td></tr>
+		<tr><td colspan="9">2005 WJHC - Gold</td></tr>
+		<tr><td colspan="9">2004 WJHC -  Silver </td></tr>
+		<tr><td>Season</td><td>Age</td><td>G</td><td>A</td><td>PTS</td><td>+/-</td><td>PIM</td><td>EVG</td><td>PPG</td></tr>
+		<tr><td>12-13</td><td>25</td><td>36</td><td>15</td><td>41</td><td>56</td><td>26</td><td>16</td><td>12</td></tr>
+		<tr><td>11-12</td><td>24</td><td>22</td><td>8</td><td>29</td><td>37</td><td>15</td><td>14</td><td>6</td></tr>
+		</table></div>
+
+
+		<div id="hallinfo"><table width="250px">
+		<tr><td colspan="3" rowspan="10"><img src="mugs/taylorhall.png"></td><td colspan="9">Taylor Hall - Left Wing</td></tr>
+		<tr><td colspan="9">Edmonton Oilers</td></tr>
+		<tr><td colspan="9">Intl. experience</td></tr>
+		<tr><td colspan="9">2010 WJHC - Silver</td></tr>
+		<tr><td colspan="9"></td></tr>
+		<tr><td colspan="9"></td></tr>
+		<tr><td>Season</td><td>Age</td><td>G</td><td>A</td><td>PTS</td><td>+/-</td><td>PIM</td><td>EVG</td><td>PPG</td></tr>
+		<tr><td>12-13</td><td>21</td><td>16</td><td>34</td><td>50</td><td>5</td><td>33</td><td>12</td><td>4</td></tr>
+		<tr><td>11-12</td><td>20</td><td>27</td><td>26</td><td>53</td><td>-3</td><td>36</td><td>36</td><td>13</td></tr>
+		</table></div>
+
+		<div id="priceinfo"><table width="250px">
+		<tr><td colspan="3" rowspan="10"><img src="mugs/careyprice.png"></td><td colspan="9">Carey Price - Goalie</td></tr>
+		<tr><td colspan="9">Montreal Canadiens</td></tr>
+		<tr><td colspan="9">Intl. experience</td></tr>
+		<tr><td colspan="9">2007 WJHC - Gold</td></tr>
+		<tr><td colspan="9"></td></tr>
+		<tr><td colspan="9"></td></tr>
+		<tr><td>Season</td><td>Age</td><td>GP</td><td>W</td><td>L</td><td>T/0</td><td>GAA</td><td>SV%</td><td>SO</td></tr>
+		<tr><td>12-13</td><td>25</td><td>39</td><td>21</td><td>13</td><td>4</td><td>2.59</td><td>.905</td><td>3</td></tr>
+		<tr><td>11-12</td><td>24</td><td>65</td><td>26</td><td>28</td><td>11</td><td>2.43</td><td>.916</td><td>4</td></tr>
+		</table></div>
+
+
+<div id="crawfordinfo"><table width="250px"><tr><td colspan="3" rowspan="10"><img src="mugs/coreycrawford.png"></td><td colspan="9">Corey Crawford - Goal</td></tr><tr><td colspan="9">Chicago Blackhawks</td></tr><tr><td colspan="9">Intl. experience</td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td>Season</td><td>Age</td><td>G</td><td>A</td><td>PTS</td><td>+/-</td><td>PIM</td><td>EVG</td><td>PPG</td></tr>
+<tr><td>12-13</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>11-12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div>
+<div id="holtbyinfo"><table width="250px"><tr><td colspan="3" rowspan="10"><img src="mugs/bradenholtby.png"></td><td colspan="9">Braden Holtby - Goal</td></tr>Washington Capitals</td></tr><tr><td colspan="9">Intl. experience</td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td>Season</td><td>Age</td><td>G</td><td>A</td><td>PTS</td><td>+/-</td><td>PIM</td><td>EVG</td><td>PPG</td></tr>
+<tr><td>12-13</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>11-12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div>
+<div id="luongoinfo"><table width="250px"><tr><td colspan="3" rowspan="10"><img src="mugs/robertoluongo.png"></td><td colspan="9">Roberto Luongo - Goal</td></tr>Vancouver Canucks</td></tr><tr><td colspan="9">Intl. experience</td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td>Season</td><td>Age</td><td>G</td><td>A</td><td>PTS</td><td>+/-</td><td>PIM</td><td>EVG</td><td>PPG</td></tr>
+<tr><td>12-13</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>11-12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div>
+<div id="smithinfo"><table width="250px"><tr><td colspan="3" rowspan="10"><img src="mugs/mikesmith.png"></td><td colspan="9">Mike Smith - Goal</td></tr>Phoenix Coyotes</td></tr><tr><td colspan="9">Intl. experience</td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td>Season</td><td>Age</td><td>G</td><td>A</td><td>PTS</td><td>+/-</td><td>PIM</td><td>EVG</td><td>PPG</td></tr>
+<tr><td>12-13</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>11-12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div>
+<div id="alznerinfo"><table width="250px"><tr><td colspan="3" rowspan="10"><img src="mugs/karlalzner.png"></td><td colspan="9">Karl Alzner - Defense</td></tr>Washington Capitals</td></tr><tr><td colspan="9">Intl. experience</td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td>Season</td><td>Age</td><td>G</td><td>A</td><td>PTS</td><td>+/-</td><td>PIM</td><td>EVG</td><td>PPG</td></tr>
+<tr><td>12-13</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>11-12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div>
+<div id="bouwmeesterinfo"><table width="250px"><tr><td colspan="3" rowspan="10"><img src="mugs/jaybouwmeester.png"></td><td colspan="9">Jay Bouwmeester - Defense</td></tr>St. Louis Blues</td></tr><tr><td colspan="9">Intl. experience</td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td>Season</td><td>Age</td><td>G</td><td>A</td><td>PTS</td><td>+/-</td><td>PIM</td><td>EVG</td><td>PPG</td></tr>
+<tr><td>12-13</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>11-12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div>
+<div id="boyleinfo"><table width="250px"><tr><td colspan="3" rowspan="10"><img src="mugs/danboyle.png"></td><td colspan="9">Dan Boyle - Defense</td></tr>San Jose Sharks</td></tr><tr><td colspan="9">Intl. experience</td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td>Season</td><td>Age</td><td>G</td><td>A</td><td>PTS</td><td>+/-</td><td>PIM</td><td>EVG</td><td>PPG</td></tr>
+<tr><td>12-13</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>11-12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div>
+<div id="doughtyinfo"><table width="250px"><tr><td colspan="3" rowspan="10"><img src="mugs/drewdoughty.png"></td><td colspan="9">Drew Doughty - Defense</td></tr>Los Angeles Kings</td></tr><tr><td colspan="9">Intl. experience</td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td>Season</td><td>Age</td><td>G</td><td>A</td><td>PTS</td><td>+/-</td><td>PIM</td><td>EVG</td><td>PPG</td></tr>
+<tr><td>12-13</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>11-12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div>
+<div id="greeninfo"><table width="250px"><tr><td colspan="3" rowspan="10"><img src="mugs/mikegreen.png"></td><td colspan="9">Mike Green - Defense</td></tr>Washington Capitals</td></tr><tr><td colspan="9">Intl. experience</td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td>Season</td><td>Age</td><td>G</td><td>A</td><td>PTS</td><td>+/-</td><td>PIM</td><td>EVG</td><td>PPG</td></tr>
+<tr><td>12-13</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>11-12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div>
+<div id="hamhuisinfo"><table width="250px"><tr><td colspan="3" rowspan="10"><img src="mugs/danhamhuis.png"></td><td colspan="9">Dan Hamhuis - Defense</td></tr>Vancouver Canucks</td></tr><tr><td colspan="9">Intl. experience</td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td>Season</td><td>Age</td><td>G</td><td>A</td><td>PTS</td><td>+/-</td><td>PIM</td><td>EVG</td><td>PPG</td></tr>
+<tr><td>12-13</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>11-12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div>
+<div id="hamonicinfo"><table width="250px"><tr><td colspan="3" rowspan="10"><img src="mugs/travishamonic.png"></td><td colspan="9">Travis Hamonic - Defense</td></tr>New York Islanders</td></tr><tr><td colspan="9">Intl. experience</td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td>Season</td><td>Age</td><td>G</td><td>A</td><td>PTS</td><td>+/-</td><td>PIM</td><td>EVG</td><td>PPG</td></tr>
+<tr><td>12-13</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>11-12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div>
+<div id="keithinfo"><table width="250px"><tr><td colspan="3" rowspan="10"><img src="mugs/duncankeith.png"></td><td colspan="9">Duncan Keith - Defense</td></tr>Chicago Blackhawks</td></tr><tr><td colspan="9">Intl. experience</td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td>Season</td><td>Age</td><td>G</td><td>A</td><td>PTS</td><td>+/-</td><td>PIM</td><td>EVG</td><td>PPG</td></tr>
+<tr><td>12-13</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>11-12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div>
+<div id="letanginfo"><table width="250px"><tr><td colspan="3" rowspan="10"><img src="mugs/krisletang.png"></td><td colspan="9">Kristopher Letang - Defense</td></tr>Pittsburgh Penguins</td></tr><tr><td colspan="9">Intl. experience</td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td>Season</td><td>Age</td><td>G</td><td>A</td><td>PTS</td><td>+/-</td><td>PIM</td><td>EVG</td><td>PPG</td></tr>
+<tr><td>12-13</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>11-12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div>
+<div id="methotinfo"><table width="250px"><tr><td colspan="3" rowspan="10"><img src="mugs/marcmethot.png"></td><td colspan="9">Marc Methot - Defense</td></tr>Ottawa Senators</td></tr><tr><td colspan="9">Intl. experience</td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td>Season</td><td>Age</td><td>G</td><td>A</td><td>PTS</td><td>+/-</td><td>PIM</td><td>EVG</td><td>PPG</td></tr>
+<tr><td>12-13</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>11-12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div>
+<div id="phaneufinfo"><table width="250px"><tr><td colspan="3" rowspan="10"><img src="mugs/dionphaneuf.png"></td><td colspan="9">Dion Phaneuf - Defense</td></tr>Toronto Maple Leafs</td></tr><tr><td colspan="9">Intl. experience</td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td>Season</td><td>Age</td><td>G</td><td>A</td><td>PTS</td><td>+/-</td><td>PIM</td><td>EVG</td><td>PPG</td></tr>
+<tr><td>12-13</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>11-12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div>
+<div id="pietrangeloinfo"><table width="250px"><tr><td colspan="3" rowspan="10"><img src="mugs/alexpietrangelo.png"></td><td colspan="9">Alex Pietrangelo - Defense</td></tr>St. Louis Blues</td></tr><tr><td colspan="9">Intl. experience</td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td>Season</td><td>Age</td><td>G</td><td>A</td><td>PTS</td><td>+/-</td><td>PIM</td><td>EVG</td><td>PPG</td></tr>
+<tr><td>12-13</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>11-12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div>
+<div id="seabrookinfo"><table width="250px"><tr><td colspan="3" rowspan="10"><img src="mugs/brentseabrook.png"></td><td colspan="9">Brent Seabrook - Defense</td></tr>Chicago Blackhawks</td></tr><tr><td colspan="9">Intl. experience</td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td>Season</td><td>Age</td><td>G</td><td>A</td><td>PTS</td><td>+/-</td><td>PIM</td><td>EVG</td><td>PPG</td></tr>
+<tr><td>12-13</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>11-12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div>
+<div id="mstaalinfo"><table width="250px"><tr><td colspan="3" rowspan="10"><img src="mugs/marcstaal.png"></td><td colspan="9">Marc Staal - Defense</td></tr>New York Rangers</td></tr><tr><td colspan="9">Intl. experience</td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td>Season</td><td>Age</td><td>G</td><td>A</td><td>PTS</td><td>+/-</td><td>PIM</td><td>EVG</td><td>PPG</td></tr>
+<tr><td>12-13</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>11-12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div>
+<div id="subbaninfo"><table width="250px"><tr><td colspan="3" rowspan="10"><img src="mugs/pksubban.png"></td><td colspan="9">Pk Subban - Defense</td></tr>Montreal Canadiens</td></tr><tr><td colspan="9">Intl. experience</td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td>Season</td><td>Age</td><td>G</td><td>A</td><td>PTS</td><td>+/-</td><td>PIM</td><td>EVG</td><td>PPG</td></tr>
+<tr><td>12-13</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>11-12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div>
+<div id="vlasicinfo"><table width="250px"><tr><td colspan="3" rowspan="10"><img src="mugs/marcedouardvlasic.png"></td><td colspan="9">Marc-Édouard Vlasic - Defense</td></tr>San Jose Sharks</td></tr><tr><td colspan="9">Intl. experience</td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td>Season</td><td>Age</td><td>G</td><td>A</td><td>PTS</td><td>+/-</td><td>PIM</td><td>EVG</td><td>PPG</td></tr>
+<tr><td>12-13</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>11-12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div>
+<div id="weberinfo"><table width="250px"><tr><td colspan="3" rowspan="10"><img src="mugs/sheaweber.png"></td><td colspan="9">Shea Weber - Defense</td></tr>Nashville Predators</td></tr><tr><td colspan="9">Intl. experience</td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td>Season</td><td>Age</td><td>G</td><td>A</td><td>PTS</td><td>+/-</td><td>PIM</td><td>EVG</td><td>PPG</td></tr>
+<tr><td>12-13</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>11-12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div>
+<div id="bergeroninfo"><table width="250px"><tr><td colspan="3" rowspan="10"><img src="mugs/patricebergeron.png"></td><td colspan="9">Patrice Bergeron - Forward</td></tr>Boston Bruins</td></tr><tr><td colspan="9">Intl. experience</td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td>Season</td><td>Age</td><td>G</td><td>A</td><td>PTS</td><td>+/-</td><td>PIM</td><td>EVG</td><td>PPG</td></tr>
+<tr><td>12-13</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>11-12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div>
+<div id="carterinfo"><table width="250px"><tr><td colspan="3" rowspan="10"><img src="mugs/jeffcarter.png"></td><td colspan="9">Jeff Carter - Forward</td></tr>Los Angeles Kings</td></tr><tr><td colspan="9">Intl. experience</td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td>Season</td><td>Age</td><td>G</td><td>A</td><td>PTS</td><td>+/-</td><td>PIM</td><td>EVG</td><td>PPG</td></tr>
+<tr><td>12-13</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>11-12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div>
+<div id="coutureinfo"><table width="250px"><tr><td colspan="3" rowspan="10"><img src="mugs/logancouture.png"></td><td colspan="9">Logan Couture - Forward</td></tr>San Jose Sharks</td></tr><tr><td colspan="9">Intl. experience</td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td>Season</td><td>Age</td><td>G</td><td>A</td><td>PTS</td><td>+/-</td><td>PIM</td><td>EVG</td><td>PPG</td></tr>
+<tr><td>12-13</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>11-12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div>
+<div id="eberleinfo"><table width="250px"><tr><td colspan="3" rowspan="10"><img src="mugs/jordaneberle.png"></td><td colspan="9">Jordan Eberle - Forward</td></tr>Edmonton Oilers</td></tr><tr><td colspan="9">Intl. experience</td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td>Season</td><td>Age</td><td>G</td><td>A</td><td>PTS</td><td>+/-</td><td>PIM</td><td>EVG</td><td>PPG</td></tr>
+<tr><td>12-13</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>11-12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div>
+<div id="getzlafinfo"><table width="250px"><tr><td colspan="3" rowspan="10"><img src="mugs/ryangetzlaf.png"></td><td colspan="9">Ryan Getzlaf - Forward</td></tr>Anaheim Ducks</td></tr><tr><td colspan="9">Intl. experience</td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td>Season</td><td>Age</td><td>G</td><td>A</td><td>PTS</td><td>+/-</td><td>PIM</td><td>EVG</td><td>PPG</td></tr>
+<tr><td>12-13</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>11-12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div>
+<div id="girouxinfo"><table width="250px"><tr><td colspan="3" rowspan="10"><img src="mugs/claudegiroux.png"></td><td colspan="9">Claude Giroux - Forward</td></tr>Philadelphia Flyers</td></tr><tr><td colspan="9">Intl. experience</td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td>Season</td><td>Age</td><td>G</td><td>A</td><td>PTS</td><td>+/-</td><td>PIM</td><td>EVG</td><td>PPG</td></tr>
+<tr><td>12-13</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>11-12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div>
+<div id="kunitzinfo"><table width="250px"><tr><td colspan="3" rowspan="10"><img src="mugs/chriskunitz.png"></td><td colspan="9">Chris Kunitz - Forward</td></tr>Pittsburgh Penguins</td></tr><tr><td colspan="9">Intl. experience</td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td>Season</td><td>Age</td><td>G</td><td>A</td><td>PTS</td><td>+/-</td><td>PIM</td><td>EVG</td><td>PPG</td></tr>
+<tr><td>12-13</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>11-12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div>
+<div id="laddinfo"><table width="250px"><tr><td colspan="3" rowspan="10"><img src="mugs/andrewladd.png"></td><td colspan="9">Andrew Ladd - Forward</td></tr>Winnipeg Jets</td></tr><tr><td colspan="9">Intl. experience</td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td>Season</td><td>Age</td><td>G</td><td>A</td><td>PTS</td><td>+/-</td><td>PIM</td><td>EVG</td><td>PPG</td></tr>
+<tr><td>12-13</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>11-12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div>
+<div id="lucicinfo"><table width="250px"><tr><td colspan="3" rowspan="10"><img src="mugs/milanlucic.png"></td><td colspan="9">Milan Lucic - Forward</td></tr>Boston Bruins</td></tr><tr><td colspan="9">Intl. experience</td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td>Season</td><td>Age</td><td>G</td><td>A</td><td>PTS</td><td>+/-</td><td>PIM</td><td>EVG</td><td>PPG</td></tr>
+<tr><td>12-13</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>11-12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div>
+<div id="marchandinfo"><table width="250px"><tr><td colspan="3" rowspan="10"><img src="mugs/bradmarchand.png"></td><td colspan="9">Brad Marchand - Forward</td></tr>Boston Bruins</td></tr><tr><td colspan="9">Intl. experience</td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td>Season</td><td>Age</td><td>G</td><td>A</td><td>PTS</td><td>+/-</td><td>PIM</td><td>EVG</td><td>PPG</td></tr>
+<tr><td>12-13</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>11-12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div>
+<div id="nashinfo"><table width="250px"><tr><td colspan="3" rowspan="10"><img src="mugs/ricknash.png"></td><td colspan="9">Rick Nash - Forward</td></tr>New York Rangers</td></tr><tr><td colspan="9">Intl. experience</td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td>Season</td><td>Age</td><td>G</td><td>A</td><td>PTS</td><td>+/-</td><td>PIM</td><td>EVG</td><td>PPG</td></tr>
+<tr><td>12-13</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>11-12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div>
+<div id="nealinfo"><table width="250px"><tr><td colspan="3" rowspan="10"><img src="mugs/jamesneal.png"></td><td colspan="9">James Neal - Forward</td></tr>Pittsburgh Penguins</td></tr><tr><td colspan="9">Intl. experience</td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td>Season</td><td>Age</td><td>G</td><td>A</td><td>PTS</td><td>+/-</td><td>PIM</td><td>EVG</td><td>PPG</td></tr>
+<tr><td>12-13</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>11-12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div>
+<div id="perryinfo"><table width="250px"><tr><td colspan="3" rowspan="10"><img src="mugs/coreyperry.png"></td><td colspan="9">Corey Perry - Forward</td></tr>Anaheim Ducks</td></tr><tr><td colspan="9">Intl. experience</td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td>Season</td><td>Age</td><td>G</td><td>A</td><td>PTS</td><td>+/-</td><td>PIM</td><td>EVG</td><td>PPG</td></tr>
+<tr><td>12-13</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>11-12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div>
+<div id="richardsinfo"><table width="250px"><tr><td colspan="3" rowspan="10"><img src="mugs/michaelrichards.png"></td><td colspan="9">Michael Richards - Forward</td></tr>Los Angeles Kings</td></tr><tr><td colspan="9">Intl. experience</td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td>Season</td><td>Age</td><td>G</td><td>A</td><td>PTS</td><td>+/-</td><td>PIM</td><td>EVG</td><td>PPG</td></tr>
+<tr><td>12-13</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>11-12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div>
+<div id="sharpinfo"><table width="250px"><tr><td colspan="3" rowspan="10"><img src="mugs/patricksharp.png"></td><td colspan="9">Patrick Sharp - Forward</td></tr>Chicago Blackhawks</td></tr><tr><td colspan="9">Intl. experience</td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td>Season</td><td>Age</td><td>G</td><td>A</td><td>PTS</td><td>+/-</td><td>PIM</td><td>EVG</td><td>PPG</td></tr>
+<tr><td>12-13</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>11-12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div>
+<div id="estaalinfo"><table width="250px"><tr><td colspan="3" rowspan="10"><img src="mugs/ericstaal.png"></td><td colspan="9">Eric Staal - Forward</td></tr>Carolina Hurricanes</td></tr><tr><td colspan="9">Intl. experience</td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td>Season</td><td>Age</td><td>G</td><td>A</td><td>PTS</td><td>+/-</td><td>PIM</td><td>EVG</td><td>PPG</td></tr>
+<tr><td>12-13</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>11-12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div>
+<div id="jstaalinfo"><table width="250px"><tr><td colspan="3" rowspan="10"><img src="mugs/jordanstaal.png"></td><td colspan="9">Jordan Staal - Forward</td></tr>Carolina Hurricanes</td></tr><tr><td colspan="9">Intl. experience</td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td>Season</td><td>Age</td><td>G</td><td>A</td><td>PTS</td><td>+/-</td><td>PIM</td><td>EVG</td><td>PPG</td></tr>
+<tr><td>12-13</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>11-12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div>
+<div id="louisinfo"><table width="250px"><tr><td colspan="3" rowspan="10"><img src="mugs/martinstlouis.png"></td><td colspan="9">Martin St. Louis - Forward</td></tr>Tampa Bay Lightning</td></tr><tr><td colspan="9">Intl. experience</td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td>Season</td><td>Age</td><td>G</td><td>A</td><td>PTS</td><td>+/-</td><td>PIM</td><td>EVG</td><td>PPG</td></tr>
+<tr><td>12-13</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>11-12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div>
+<div id="stamkosinfo"><table width="250px"><tr><td colspan="3" rowspan="10"><img src="mugs/stevenstamkos.png"></td><td colspan="9">Steven Stamkos - Forward</td></tr>Tampa Bay Lightning</td></tr><tr><td colspan="9">Intl. experience</td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td>Season</td><td>Age</td><td>G</td><td>A</td><td>PTS</td><td>+/-</td><td>PIM</td><td>EVG</td><td>PPG</td></tr>
+<tr><td>12-13</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>11-12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div>
+<div id="tavaresinfo"><table width="250px"><tr><td colspan="3" rowspan="10"><img src="mugs/johntavares.png"></td><td colspan="9">John Tavares - Forward</td></tr>New York Islanders</td></tr><tr><td colspan="9">Intl. experience</td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td>Season</td><td>Age</td><td>G</td><td>A</td><td>PTS</td><td>+/-</td><td>PIM</td><td>EVG</td><td>PPG</td></tr>
+<tr><td>12-13</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>11-12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div>
+<div id="thorntoninfo"><table width="250px"><tr><td colspan="3" rowspan="10"><img src="mugs/joethornton.png"></td><td colspan="9">Joe Thornton - Forward</td></tr>San Jose Sharks</td></tr><tr><td colspan="9">Intl. experience</td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td>Season</td><td>Age</td><td>G</td><td>A</td><td>PTS</td><td>+/-</td><td>PIM</td><td>EVG</td><td>PPG</td></tr>
+<tr><td>12-13</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>11-12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div>
+<div id="toewsinfo"><table width="250px"><tr><td colspan="3" rowspan="10"><img src="mugs/jonathantowes.png"></td><td colspan="9">Jonathan Toews - Forward</td></tr>Chicago Blackhawks</td></tr><tr><td colspan="9">Intl. experience</td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td colspan="9"></td></tr><tr><td>Season</td><td>Age</td><td>G</td><td>A</td><td>PTS</td><td>+/-</td><td>PIM</td><td>EVG</td><td>PPG</td></tr>
+<tr><td>12-13</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>11-12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div>
+
+
+		</div>
+
+		<div id="yourteam" style="color:black;">
+		<table id="yourteamtable" border="0px" padding="5px;" width="960px" style="background:#dedede url(table_background.png) no-repeat;border-collapse:collapse;">
+		<tr><td colspan="13" style="text-align:center;">My Team Canada</td></tr>
+		<tr><td colspan="5" style="text-align:center;">Forwards</td><td width="90px">&nbsp;</td><td colspan="3" style="text-align:center;">Defencemen</td><td width="90px">&nbsp;</td><td colspan="3" style="text-align:center;">Goalies</td></tr>
+		<tr><td id="left1photo" width="100px"><img src="mugs/nopic.png"></td><td width="20px">&nbsp;</td><td id="centre1photo" width="100px"><img src="mugs/nopic.png"></td><td width="20px">&nbsp;</td><td id="right1photo" width="100px"><img src="mugs/nopic.png"></td><td width="90px">&nbsp;</td><td id="leftd1photo" width="100px"><img src="mugs/nopic.png"></td><td width="20px">&nbsp;</td><td id="rightd1photo" width="100px"><img src="mugs/nopic.png"></td><td width="90px">&nbsp;</td><td id="goalie1photo" width="100px"><img src="mugs/nopic.png"></td><td width="20px">&nbsp;</td><td id="goalie2photo" width="100px"><img src="mugs/nopic.png"></td></tr>
+		<tr><td id="left1">You didn't make a pick!</td><td>&nbsp;</td><td id="centre1">You didn't make a pick!</td><td>&nbsp;</td><td id="right1">You didn't make a pick!</td><td>&nbsp;</td><td id="leftd1">You didn't make a pick!</td><td>&nbsp;</td><td id="rightd1">You didn't make a pick!</td><td>&nbsp;</td><td id="goalie1">You didn't make a pick!</td><td>&nbsp;</td><td id="goalie2">You didn't make a pick!</td></tr>
+		<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td colspan="3" rowspan="3"><p style="font-size:24px; color:#000;">&nbsp;&nbsp;&nbsp;Brought to you by:</td></tr>
+		<tr><td id="left2photo"><img src="mugs/nopic.png"></td><td width="20px">&nbsp;</td><td id="centre2photo"><img src="mugs/nopic.png"></td><td width="20px">&nbsp;</td><td id="right2photo"><img src="mugs/nopic.png"></td><td>&nbsp;</td><td id="leftd2photo"><img src="mugs/nopic.png"></td><td>&nbsp;</td><td id="rightd2photo"><img src="mugs/nopic.png"></td><td>&nbsp;</td></tr>
+		<tr><td id="left2">You didn't make a pick!</td><td>&nbsp;</td><td id="centre2">You didn't make a pick!</td><td>&nbsp;</td><td id="right2">You didn't make a pick!</td><td>&nbsp;</td><td id="leftd2">You didn't make a pick!</td><td>&nbsp;</td><td id="rightd2">You didn't make a pick!</td><td>&nbsp;</td></tr>
+		<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td colspan="3" rowspan="3"><img src="sponsor.png"></td></tr>
+		<tr><td id="left3photo"><img src="mugs/nopic.png"></td><td>&nbsp;</td><td id="centre3photo"><img src="mugs/nopic.png"></td><td>&nbsp;</td><td id="right3photo"><img src="mugs/nopic.png"></td><td>&nbsp;</td><td id="leftd3photo"><img src="mugs/nopic.png"></td><td>&nbsp;</td><td id="rightd3photo"><img src="mugs/nopic.png"></td><td>&nbsp;</td></tr>
+		<tr><td id="left3">You didn't make a pick!</td><td>&nbsp;</td><td id="centre3">You didn't make a pick!</td><td>&nbsp;</td><td id="right3">You didn't make a pick!</td><td>&nbsp;</td><td id="leftd3">You didn't make a pick!</td><td>&nbsp;</td><td id="rightd3">You didn't make a pick!</td><td>&nbsp;</td></tr>
+		<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td colspan="3" rowspan="3"><img src="sponsor2.png"></td></tr>
+		<tr><td id="left4photo"><img src="mugs/nopic.png"></td><td>&nbsp;</td><td id="centre4photo"><img src="mugs/nopic.png"></td><td>&nbsp;</td><td id="right4photo"><img src="mugs/nopic.png"></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+		<tr><td id="left4">You didn't make a pick!</td><td>&nbsp;</td><td id="centre4">You didn't make a pick!</td><td>&nbsp;</td><td id="right4">You didn't make a pick!</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+		</table>
+
+
+		</div>
+	</div>
+</body>
+</html>
